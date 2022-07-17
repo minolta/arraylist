@@ -6,18 +6,21 @@ class D
 {
 private:
     int id;
-    int tag;
-    long date;
+    uint32_t tag;
+    String tags;
+    uint32_t date;
 
 public:
     D *next; //ชี้จากต้นไปหาง
     D *prv; // จากหางไปตัวถัดไป
     void setId(int id);
     int getId();
-    void setTag(int tag);
-    int getTag();
-    void setDate(long date);
-    long getDate();
+    void setTag(uint32_t tag);
+    void setTags(String tags);
+    uint32_t getTag();
+    void setDate(uint32_t date);
+    uint32_t getDate();
+    String getTags();
     D clone();
 };
 
@@ -35,7 +38,7 @@ private:
     int id = 0;
 
 public:
-    void add(int data, long date);
+    void add(uint32_t data, uint32_t date,String tags);
     // next popup head data and remove
     D *next();
     void list();

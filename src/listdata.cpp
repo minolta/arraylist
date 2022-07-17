@@ -15,19 +15,27 @@ int D::getId()
 {
     return id;
 }
-void D::setTag(int t)
+void D::setTag(uint32_t t)
 {
     tag = t;
 }
-int D::getTag()
+uint32_t D::getTag()
 {
     return tag;
 }
-void D::setDate(long d)
+void D::setTags(String t)
+{
+    tags = t;
+}
+String D::getTags()
+{
+    return tags;
+}
+void D::setDate(uint32_t d)
 {
     date = d;
 }
-long D::getDate()
+uint32_t D::getDate()
 {
     return date;
 }
@@ -39,9 +47,12 @@ D *DataList::getFirst()
     {
         pointtofirst = first;
         if (first->prv != NULL)
+        {
             first = first->prv; //ขยับ first ไป node ถัดไป
+        }
         else
-            first = NULL; //ถ้ามีอันเดียว
+            tail = first = NULL; //ถ้ามีอันเดียว
+        size--;
     }
     return pointtofirst;
 }
@@ -49,7 +60,7 @@ int DataList::getsize()
 {
     return size;
 }
-void DataList::add(int data, long date)
+void DataList::add(uint32_t cardid, uint32_t date, String tags)
 {
     id++;
     size++;
@@ -58,8 +69,9 @@ void DataList::add(int data, long date)
     new_node->prv = NULL;
 
     new_node->setId(id);
-    new_node->setTag(data);
+    new_node->setTag(cardid);
     new_node->setDate(date);
+    new_node->setTags(tags);
 
     if (tail != NULL)
     {
@@ -82,7 +94,7 @@ void DataList::list()
     D *point = first;
     while (point != NULL)
     {
-        Serial.printf("DATA ID:%d  data:%d date:%ld\n", point->getId(), point->getTag(), point->getDate());
+        Serial.printf("\nDATA ID:%d  data:%zu date:%zu", point->getId(), point->getTag(), point->getDate());
         point = point->prv;
     }
     Serial.println("DATALIST");
