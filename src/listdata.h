@@ -7,12 +7,12 @@ class D
 private:
     int id;
     uint32_t tag;
-    String tags;
+    char tags[16];
     uint32_t date;
 
 public:
     D *next; //ชี้จากต้นไปหาง
-    D *prv; // จากหางไปตัวถัดไป
+    D *prv;  // จากหางไปตัวถัดไป
     void setId(int id);
     int getId();
     void setTag(uint32_t tag);
@@ -38,7 +38,7 @@ private:
     int id = 0;
 
 public:
-    void add(uint32_t data, uint32_t date,String tags);
+    void add(uint32_t data, uint32_t date, String tags);
     // next popup head data and remove
     D *next();
     void list();

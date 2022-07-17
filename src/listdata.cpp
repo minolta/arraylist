@@ -25,7 +25,9 @@ uint32_t D::getTag()
 }
 void D::setTags(String t)
 {
-    tags = t;
+    // Serial.println(t);
+    strcpy(tags, t.c_str());
+    // tags = t;
 }
 String D::getTags()
 {
@@ -94,7 +96,7 @@ void DataList::list()
     D *point = first;
     while (point != NULL)
     {
-        Serial.printf("\nDATA ID:%d  data:%zu date:%zu", point->getId(), point->getTag(), point->getDate());
+        Serial.printf("\nDATA ID:%d  data:%zu date:%zu idS: %s", point->getId(), point->getTag(), point->getDate(),point->getTags().c_str());
         point = point->prv;
     }
     Serial.println("DATALIST");
