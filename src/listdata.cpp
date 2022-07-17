@@ -23,6 +23,14 @@ uint32_t D::getTag()
 {
     return tag;
 }
+void D::setTags(String t)
+{
+    tags = t;
+}
+String D::getTags()
+{
+    return tags;
+}
 void D::setDate(uint32_t d)
 {
     date = d;
@@ -52,7 +60,7 @@ int DataList::getsize()
 {
     return size;
 }
-void DataList::add(uint32_t cardid, uint32_t date)
+void DataList::add(uint32_t cardid, uint32_t date, String tags)
 {
     id++;
     size++;
@@ -63,6 +71,7 @@ void DataList::add(uint32_t cardid, uint32_t date)
     new_node->setId(id);
     new_node->setTag(cardid);
     new_node->setDate(date);
+    new_node->setTags(tags);
 
     if (tail != NULL)
     {

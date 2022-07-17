@@ -7,6 +7,7 @@ class D
 private:
     int id;
     uint32_t tag;
+    String tags;
     uint32_t date;
 
 public:
@@ -15,9 +16,11 @@ public:
     void setId(int id);
     int getId();
     void setTag(uint32_t tag);
+    void setTags(String tags);
     uint32_t getTag();
     void setDate(uint32_t date);
     uint32_t getDate();
+    String getTags();
     D clone();
 };
 
@@ -35,7 +38,7 @@ private:
     int id = 0;
 
 public:
-    void add(uint32_t data, uint32_t date);
+    void add(uint32_t data, uint32_t date,String tags);
     // next popup head data and remove
     D *next();
     void list();
